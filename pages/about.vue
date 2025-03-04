@@ -1,9 +1,8 @@
 <template>
-  <div>
-    <h1>About page</h1>
-    <div class="flex flex-col bg-gray-100 p-4">
-      <NuxtLink to="/">Home page</NuxtLink>
-      <NuxtLink to="/counter">Counter page</NuxtLink>
+  <LayoutsBaseLayout>
+    <div class="flex flex-col">
+      <Typography variant="h1" affects="large">About</Typography>
+      <Typography variant="p" affects="large">This is the about page.</Typography>
     </div>
-  </div>
+  </LayoutsBaseLayout>
 </template>
