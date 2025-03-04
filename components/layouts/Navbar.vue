@@ -11,7 +11,7 @@ const navLinks = [
 </script>
 
 <template>
-  <nav class="p-4">
+  <nav class="py-4">
     <div class="container mx-auto flex justify-between items-center">
       <Typography variant="p" affects="large">RH</Typography>
 

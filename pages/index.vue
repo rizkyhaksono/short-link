@@ -5,8 +5,8 @@ import { Typography } from '@/components/ui/typography'
 
 <template>
   <LayoutsBaseLayout>
-    <Typography variant="h2" affects="large">Heading 1</Typography>
-    <Button>Button</Button>
+    <Typography variant="h2" affects="large">Short Link</Typography>
+    <Typography variant="p" affects="large">Input</Typography>
 
   </LayoutsBaseLayout>
 </template>
