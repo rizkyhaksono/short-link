@@ -1,16 +1,35 @@
 <script setup lang="ts">
+import { Button } from '@/components/ui/button'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { Icon } from '@iconify/vue'
+import { Typography } from '@/components/ui/typography'
 
+const colorMode = useColorMode()
 </script>
 
 <template>
-  <div>
-    <h1>Welcome to the homepage</h1>
-    <AppAlert>
-      This is an auto-imported component
-    </AppAlert>
-    <div class="flex flex-col bg-gray-100 p-4">
-      <NuxtLink to="/about">About page</NuxtLink>
-      <NuxtLink to="/counter">Counter page</NuxtLink>
-    </div>
-  </div>
+  <Button>Button</Button>
+  <Typography variant="p" affects="large">Heading 1</Typography>
+  <DropdownMenu>
+    <DropdownMenuTrigger as-child>
+      <Button variant="outline">
+        <Icon icon="radix-icons:moon"
+          class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+        <Icon icon="radix-icons:sun"
+          class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+        <span class="sr-only">Toggle theme</span>
+      </Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent>
+      <DropdownMenuItem @click="colorMode.preference = 'light'">
+        Light
+      </DropdownMenuItem>
+      <DropdownMenuItem @click="colorMode.preference = 'dark'">
+        Dark
+      </DropdownMenuItem>
+      <DropdownMenuItem @click="colorMode.preference = 'system'">
+        System
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
 </template>
