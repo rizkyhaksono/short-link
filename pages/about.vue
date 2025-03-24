@@ -1,56 +1,22 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import {
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { toast } from '@/components/ui/toast/use-toast'
+import { useToast } from '@/components/ui/toast/use-toast'
+import Typography from '~/components/ui/typography/Typography.vue'
 
-import { toTypedSchema } from '@vee-validate/zod'
-import { useForm } from 'vee-validate'
-import { h } from 'vue'
-import * as z from 'zod'
-
-const formSchema = toTypedSchema(z.object({
-  username: z.string().min(2).max(50),
-}))
-
-const { isFieldDirty, handleSubmit } = useForm({
-  validationSchema: formSchema,
-})
-
-const onSubmit = handleSubmit((values) => {
-  toast({
-    title: 'You submitted the following values:',
-    description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(values, null, 2))),
-  })
-  console.log('Form submitted!', values)
-})
+const { toast } = useToast()
 </script>
 
 <template>
   <LayoutsBaseLayout>
-    <form class="w-2/3 space-y-6" @submit="onSubmit">
-      <FormField v-slot="{ componentField }" name="username" :validate-on-blur="!isFieldDirty">
-        <FormItem>
-          <FormLabel>Username</FormLabel>
-          <FormControl>
-            <Input type="text" placeholder="shadcn" v-bind="componentField" />
-          </FormControl>
-          <FormDescription>
-            This is your public display name.
-          </FormDescription>
-          <FormMessage />
-        </FormItem>
-      </FormField>
-      <Button type="submit">
-        Submit
-      </Button>
-    </form>
+    <Typography variant="h3">About</Typography>
+    <Typography variant="p">
+      This web application is a simple URL shortener that allows you to shorten your long URLs into a shorter one.
+    </Typography>
+    <Button variant="outline" class="mt-5" @click="() => {
+      toast({
+        title: 'Hello, world!',
+        description: 'This is a toast message.',
+      });
+    }">Show Toast</Button>
   </LayoutsBaseLayout>
 </template>
