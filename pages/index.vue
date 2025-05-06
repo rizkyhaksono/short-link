@@ -9,12 +9,14 @@ import {
   FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { toast } from 'vue-sonner'
+import { useToast } from '@/components/ui/toast/use-toast'
 
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
 import * as z from 'zod'
 import type { ApiResponse } from '~/lib/types/api'
+
+const { toast } = useToast()
 
 const formSchema = toTypedSchema(z.object({
   short_url: z.string().min(2, 'Short link must be at least 2 characters').max(150).nonempty(),
@@ -36,12 +38,24 @@ const onSubmit = handleSubmit(async (values) => {
     })
 
     if (res?.success) {
-      toast.success('Link created successfully')
+      toast({
+        title: 'Success',
+        description: 'Link created successfully!',
+        variant: "default"
+      })
     } else {
-      toast.error('Failed to create link')
+      toast({
+        title: 'Error',
+        description: 'An error occurred while creating the link. Please try again.',
+        variant: "destructive"
+      })
     }
   } catch (error) {
-    toast.error('An error occurred while creating the link')
+    toast({
+      title: 'Error',
+      description: 'An error occurred while creating the link. Please try again.',
+      variant: "destructive"
+    })
     console.error(error)
   }
 })
