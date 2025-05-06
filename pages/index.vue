@@ -10,9 +10,12 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 
-import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
+import { useFetch } from '@vueuse/core'
+import { useForm } from 'vee-validate'
 import * as z from 'zod'
+
+const { data } = await useFetch(`http://api.link.natee.my.id/api/links`)
 
 const formSchema = toTypedSchema(z.object({
   short_url: z.string().min(2, 'Short link must be at least 2 characters').max(150).nonempty(),
@@ -23,8 +26,14 @@ const { isFieldDirty, handleSubmit } = useForm({
   validationSchema: formSchema,
 })
 
-const onSubmit = handleSubmit((values) => {
-  console.log('Form submitted!', values)
+const onSubmit = handleSubmit(async (values) => {
+  const res = await $fetch(`http://api.link.natee.my.id/api/links`, {
+    method: 'POST',
+    body: {
+      short_url: values.short_url,
+      original_url: values.original_url,
+    },
+  })
 })
 </script>
 
@@ -35,7 +44,7 @@ const onSubmit = handleSubmit((values) => {
         <FormItem>
           <FormLabel>Short Link</FormLabel>
           <FormControl>
-            <Input type="text" placeholder="https://link.natee.me/(your slug short link)" v-bind="componentField" />
+            <Input type="text" placeholder="https://link.natee.my.id/(your slug short link)" v-bind="componentField" />
           </FormControl>
           <FormDescription>
             The short link is the link that will be used to access the original link.
