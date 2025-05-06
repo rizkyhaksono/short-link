@@ -11,7 +11,8 @@ const isMobileMenuOpen = ref(false)
 
 const navLinks = [
   { path: '/', text: 'Home' },
-  { path: '/about', text: 'About' }
+  { path: '/redirect', text: 'Redirect' },
+  { path: '/about', text: 'About' },
 ]
 </script>
 
@@ -20,10 +21,10 @@ const navLinks = [
     <div class="flex justify-between items-center">
       <!-- Logo -->
       <NuxtLink to="/" class="text-xl font-bold text-gray-900 dark:text-white">
-        RH
+        <img src="https://natee.my.id/favicon.ico" alt="Logo" class="size-8" />
       </NuxtLink>
 
-      <!-- Desktop Navigation -->
+      <!-- Desktop -->
       <div class="hidden md:flex items-center gap-2 space-x-2">
         <NuxtLink v-for="link in navLinks" :key="link.path" :to="link.path" class="relative group">
           <Typography variant="p" affects="small"
@@ -33,9 +34,9 @@ const navLinks = [
           <span
             class="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-600 dark:bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
         </NuxtLink>
-        <NuxtLink to="/auth/login">
+        <!-- <NuxtLink to="/auth/login">
           <Button variant="default" size="sm">Login</Button>
-        </NuxtLink>
+        </NuxtLink> -->
 
         <DropdownMenu>
           <DropdownMenuTrigger as-child>
@@ -55,7 +56,7 @@ const navLinks = [
         </DropdownMenu>
       </div>
 
-      <!-- Mobile Menu Button -->
+      <!-- Mobile Menu -->
       <div class="md:hidden flex items-center gap-2">
         <button class="md:hidden text-gray-700 dark:text-white focus:outline-none"
           @click="isMobileMenuOpen = !isMobileMenuOpen">
@@ -83,22 +84,23 @@ const navLinks = [
     </div>
 
     <!-- Mobile Menu -->
-    <div v-if="isMobileMenuOpen" class="md:hidden border-t border-gray-200 dark:border-gray-800 transition-all">
-      <div class="py-4 flex flex-col space-y-4">
+    <div v-if="isMobileMenuOpen"
+      class="md:hidden mt-4 border border-gray-200 dark:border-gray-800 transition-all rounded-lg">
+      <div class="p-4 flex flex-col space-y-4">
         <NuxtLink v-for="link in navLinks" :key="link.path" :to="link.path"
           class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           @click="isMobileMenuOpen = false">
           {{ link.text }}
         </NuxtLink>
 
-        <div class="flex flex-col space-y-2">
+        <!-- <div class="flex flex-col space-y-2">
           <NuxtLink to="/auth/login">
             <Button variant="outline" class="w-full">Login</Button>
           </NuxtLink>
           <NuxtLink to="/auth/register">
             <Button variant="default" class="w-full">Register</Button>
           </NuxtLink>
-        </div>
+        </div> -->
       </div>
     </div>
   </nav>
