@@ -1,9 +1,11 @@
 <template>
   <LayoutsBaseLayout>
-    <div class="container mx-auto p-8 max-w-md">
+    <div class="mx-auto">
       <div class="mb-6">
-        <h2 class="text-2xl font-semibold">Short Link Generator</h2>
-        <p class="text-sm text-muted-foreground">Enter your link to generate a short URL</p>
+        <h2 class="text-2xl font-semibold">Redirect Short Link</h2>
+        <p class="text-sm text-muted-foreground">
+          Enter your short URL and we'll redirect you to the original destination link
+        </p>
       </div>
       <form @submit.prevent="handleSubmit">
         <div class="space-y-4">

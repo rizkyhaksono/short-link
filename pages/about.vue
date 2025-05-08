@@ -62,15 +62,15 @@ const stats = [
       </div>
     </div>
 
-    <div class="max-w-4xl mx-auto px-4 pb-16">
+    <div class="max-w-4xl mx-auto px-4">
       <!-- Features Grid -->
       <div class="mb-16">
         <Typography variant="h3" class="text-3xl font-semibold text-center mb-12">
           Powerful Features for Your Links
         </Typography>
         <div class="grid md:grid-cols-2 gap-8">
-          <div v-for="feature in features" :key="feature.title" class="group p-8 transition-all duration-300
-                      hover:shadow-lg dark:hover:shadow-slate-700 transform hover:-translate-y-1">
+          <div v-for="feature in features" :key="feature.title"
+            class="group p-8 transition-all duration-300 hover:shadow-lg dark:hover:shadow-slate-700 transform hover:-translate-y-1">
             <div class="text-4xl mb-4">{{ feature.icon }}</div>
             <Typography variant="h4"
               class="text-xl font-semibold mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400">
@@ -84,7 +84,7 @@ const stats = [
       </div>
 
       <!-- Why Choose Us -->
-      <div class="rounded-2xl p-8 mb-16">
+      <div class="rounded-2xl p-8">
         <Typography variant="h3" class="text-2xl font-semibold mb-6 dark:text-white">
           Why Choose ShortLink?
         </Typography>
@@ -96,8 +96,8 @@ const stats = [
       </div>
 
       <!-- Call to Action -->
-      <div class="text-center bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-700 
-                  dark:to-blue-900 rounded-2xl p-12 text-white">
+      <div
+        class="text-center bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-700 dark:to-blue-900 rounded-2xl p-12 text-white">
         <Typography variant="h3" class="text-2xl font-semibold mb-4">
           Ready to Start Shortening?
         </Typography>

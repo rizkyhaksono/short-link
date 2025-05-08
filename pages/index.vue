@@ -63,6 +63,10 @@ const onSubmit = handleSubmit(async (values) => {
 
 <template>
   <LayoutsBaseLayout>
+    <div class="mb-6">
+      <h2 class="text-2xl font-semibold">Short Link Generator</h2>
+      <p class="text-sm text-muted-foreground">Enter your link to generate a short URL</p>
+    </div>
     <form @submit="onSubmit" class="space-y-6">
       <FormField v-slot="{ componentField }" name="short_url" :validate-on-blur="!isFieldDirty">
         <FormItem>
