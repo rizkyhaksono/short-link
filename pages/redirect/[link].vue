@@ -10,7 +10,7 @@ const link = router.currentRoute.value.params.link
 const error = ref(false)
 
 try {
-  const { data: linkData } = await $fetch<SearchApiResponse>(`http://api.link.natee.my.id/api/links/search`, {
+  const { data: linkData } = await $fetch<SearchApiResponse>(`https://api.link.natee.my.id/api/links/search`, {
     method: 'POST',
     body: {
       short_url: link,

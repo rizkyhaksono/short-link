@@ -13,7 +13,7 @@ const login = async () => {
   errorMessage.value = '';
 
   try {
-    const response = await $fetch('http://api.link.natee.me/api/login', {
+    const response = await $fetch('https://api.link.natee.my.id/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: { email: email.value, password: password.value }

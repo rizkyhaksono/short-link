@@ -29,7 +29,7 @@ const { isFieldDirty, handleSubmit } = useForm({
 
 const onSubmit = handleSubmit(async (values) => {
   try {
-    const res = await $fetch<ApiResponse>(`http://api.link.natee.my.id/api/links`, {
+    const res = await $fetch<ApiResponse>(`https://api.link.natee.my.id/api/links`, {
       method: 'POST',
       body: {
         short_url: values.short_url,
